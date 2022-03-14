@@ -19,11 +19,12 @@ function App() {
   const [socials, setSocials] = useState([]);
   const [headerSections, setheaderSections] = useState([])
 
-  const url = "http://127.0.0.1:5000"
-    
+  const url = process.env.REACT_APP_API_URL
+
   useEffect(() => {
     fetchSocials();
     fetchHeaderSections();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async  function fetchSocials(){
