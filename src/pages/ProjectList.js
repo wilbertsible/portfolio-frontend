@@ -4,17 +4,19 @@ import Footer from '../components/Footer';
 
 
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid'; 
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 
+require('dotenv').config()
+
 function ProjectList(props) {
     const {mobileView, headers} = props
     const [projectsList, setContentList] = useState([])
-    const url = "http://127.0.0.1:5000/"
+    const url = process.env.REACT_APP_API_URL
 
     useEffect(() => {
         const fetchContentList = async() =>{
@@ -29,23 +31,21 @@ function ProjectList(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    console.log(projectsList)
     return(
         <Container maxwidth="lg">
             <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
-            <Grid container spacing={6} sx={{ mt: 0 }}>
-                <Grid item xs='12'>
-                <Typography variant="h3" align='center' gutterBottom>
+            <Typography variant="h3" align='center' gutterBottom sx={{ mt: 6 }}>
                             {"Projects"}
                 </Typography>
                 <Divider />
-                </Grid>
-                {projectsList.map((project) =>{
-                    return(<Grid item xs='6'>
+                <Grid container spacing={6} sx={{ mt: 0}}>
+                {projectsList.map((project, projectKey) =>{
+                    return(
+                    <Grid key={projectKey} item xs={6}>
                         <Post isHome={false} project={project}/>
                     </Grid>
                 )})}
-            </Grid>
+                </Grid>
             <Footer />
         </Container>
     )

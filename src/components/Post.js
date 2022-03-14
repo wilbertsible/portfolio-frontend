@@ -10,11 +10,9 @@ import CardMedia from '@mui/material/CardMedia';
 
 function Post(props) {
   const { project, isHome } = props;
-  console.log(isHome)
-
   const displayHome = () => {
     return (
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" href={window.location.href +"/"+ project.fileName}>
         <Card elevation={5} sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
@@ -33,8 +31,8 @@ function Post(props) {
   }
   const displayProjectsList = () => {
     return (
-      <Card sx={{ display:'flex' }}>
-        <CardActionArea>
+      <Card sx={{ display:'flex', height:'240px' }}>
+        <CardActionArea component="a" href={window.location.href +"/"+ project.fileName}>
           <CardMedia
             component="img"
             height="140"

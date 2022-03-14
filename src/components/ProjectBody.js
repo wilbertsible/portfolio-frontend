@@ -10,11 +10,13 @@ import '../App.css'
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 
+require('dotenv').config()
+
 function ProjectBody(props){
     const {projectTitle} = props
     const [project, setProject] = useState([])
     
-    const url = "http://127.0.0.1:5000"
+    const url = process.env.REACT_APP_API_URL
 
     useEffect(() => {
         const fetchProject = async() =>{

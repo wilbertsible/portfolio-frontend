@@ -8,11 +8,14 @@ import Social from '../components/Social';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 
+require('dotenv').config()
+
 function Body(props){
     const {sidebar, socials, mobileView} = props;
 
     const [projectsList, setContentList] = useState([])
-    const url = "http://127.0.0.1:5000/"
+    
+    const url = process.env.REACT_APP_API_URL
 
     useEffect(() => {
         const fetchContentList = async() =>{
@@ -47,10 +50,10 @@ function Body(props){
                     </Grid>
                 </Grid>
                 <Grid item xs={4}>
-                    <AboutCard
+                    {/* <AboutCard
                     title={sidebar.title}
                     description={sidebar.description}
-                    />
+                    /> */}
                     <Social
                     socials={socials}
                     />
@@ -63,10 +66,10 @@ function Body(props){
         return(
             <Grid container spacing={5} sx={{ mt: 0 }}>
                 <Grid item xs={12} >
-                    <AboutCard
+                    {/* <AboutCard
                     title={sidebar.title}
                     description={sidebar.description}
-                    />
+                    /> */}
                     <Typography variant="h6" gutterBottom>
                         {"Projects"}
                     </Typography>
