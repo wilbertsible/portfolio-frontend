@@ -12,7 +12,7 @@ function Post(props) {
   const { project, isHome } = props;
   const displayHome = () => {
     return (
-      <CardActionArea component="a" href={window.location.href +"/"+ project.fileName}>
+      <CardActionArea component="a" href={window.location.href +"Projects/"+ project.fileName}>
         <Card elevation={5} sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
