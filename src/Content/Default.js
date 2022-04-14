@@ -1,10 +1,10 @@
 
-function PC() {
+function Default() {
     return(
         <div>
-            <p>&emsp; Default World</p>
+            <p>&emsp;Coming soon</p>
         </div>
     )
 }
 
-export default PC;
+export default Default;
