@@ -30,7 +30,6 @@ function Body(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    console.log(projectsList)
 
     const displayDesktop = () => {
         return(
