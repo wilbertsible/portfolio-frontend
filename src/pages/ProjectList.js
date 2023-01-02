@@ -15,7 +15,7 @@ require('dotenv').config()
 
 function ProjectList(props) {
     const {mobileView, headers} = props
-    const [projectsList, setContentList] = useState([])
+    const [projectsList, setProjectsList] = useState([])
     const url = process.env.REACT_APP_API_URL
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function ProjectList(props) {
             await axios.get(url + "/projects")
             .then((contentResponse) =>{
             const headers = JSON.parse(contentResponse.data);
-            setContentList(headers);
+            setProjectsList(headers);
             })
             .catch((error) =>console.log(error))
         }
@@ -34,7 +34,7 @@ function ProjectList(props) {
     return(
         <Container maxwidth="lg">
             <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
-            <Typography variant="h3" align='center' gutterBottom sx={{ mt: 6 }}>
+            <Typography variant="h3" align="center" gutterBottom sx={{ mt: 6 }}>
                             {"Projects"}
                 </Typography>
                 <Divider />

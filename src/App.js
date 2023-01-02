@@ -17,7 +17,7 @@ const theme = createTheme();
 function App() {
   const [mobileView, setMobileView] = useState(false);
   const [socials, setSocials] = useState([]);
-  const [headerSections, setheaderSections] = useState([])
+  const [headerSections, setHeaderSections] = useState([])
 
   const url = process.env.REACT_APP_API_URL
 
@@ -39,7 +39,7 @@ function App() {
     await axios.get(url + "/header")
     .then((heardersResponse) =>{
       const headers = JSON.parse(heardersResponse.data);
-      setheaderSections(headers);
+      setHeaderSections(headers);
     })
   }
 
@@ -51,9 +51,9 @@ function App() {
         : setMobileView(false);
     };
     setResponsiveness();
-    window.addEventListener('resize', () => setResponsiveness());
+    window.addEventListener("resize", () => setResponsiveness());
     return () => {
-        window.removeEventListener('resize', () => setResponsiveness());
+        window.removeEventListener("resize", () => setResponsiveness());
     }
   }, []);
 

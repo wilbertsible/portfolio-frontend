@@ -16,7 +16,7 @@ function Portfolio() {
             <p>&emsp;&emsp;In the backend, I used Python Flask. Currently, the only function of my backend is to provide API for a couple of components in the frontend, namely, the header and the socials. What opted me to use Flask was due to an interview homework that I got from a company. The task was to create an API. I did not know anything about making APIs, so I studied Python Flask. I want to continue and make more complicated computations in Python in the future.</p>
             <h2>Database: MongoDB</h2>
             <img src='https://i.imgur.com/gMfeYLs.png' alt='React' style={{width:'100%',maxWidth:'480px'}}/>
-            <p>&emsp;&emsp; want to use a NoSQL  database to store my data. This is because I want the database to be free from structure. Thus, I chose MongoDB. I have some experience with MongoDB in the past. I have worked with MongoDB which was why this was a great fit for my tech stack.</p>
+            <p>&emsp;&emsp;I want to use a NoSQL  database to store my data. This is because I want the database to be free from structure. Thus, I chose MongoDB. I have some experience with MongoDB in the past. I have worked with MongoDB which was why this was a great fit for my tech stack.</p>
             <h2>Conclusion</h2>
             <p>&emsp;&emsp;Overall, I learned a lot from creating this website. I have learned the intricacies of architecture and web development. There were times that I was overthinking how I would implement the website, even overengineering it. My advice when creating your website is to just go for it, because regardless whether you do it right or wrong, the lessons you learn from the experience will be worth it.</p>
 
