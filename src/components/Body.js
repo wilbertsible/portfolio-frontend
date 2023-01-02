@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Post from '../components/Post';
-import AboutCard from '../components/AboutCard';
+// import AboutCard from '../components/AboutCard';
 import Social from '../components/Social';
 
 import axios from 'axios';
@@ -11,7 +11,7 @@ import React, {useEffect, useState} from 'react'
 require('dotenv').config()
 
 function Body(props){
-    const {sidebar, socials, mobileView} = props;
+    const {socials, mobileView} = props;
 
     const [projectsList, setContentList] = useState([])
     
@@ -19,7 +19,7 @@ function Body(props){
 
     useEffect(() => {
         const fetchContentList = async() =>{
-            await axios.get(url + "projects")
+            await axios.get(url + "/projects")
             .then((contentResponse) =>{
             const headers = JSON.parse(contentResponse.data);
             setContentList(headers);
@@ -30,7 +30,7 @@ function Body(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-
+    console.log(projectsList)
 
     const displayDesktop = () => {
         return(

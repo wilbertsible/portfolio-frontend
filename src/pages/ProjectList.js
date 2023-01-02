@@ -20,7 +20,7 @@ function ProjectList(props) {
 
     useEffect(() => {
         const fetchContentList = async() =>{
-            await axios.get(url + "projects")
+            await axios.get(url + "/projects")
             .then((contentResponse) =>{
             const headers = JSON.parse(contentResponse.data);
             setContentList(headers);
