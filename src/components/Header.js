@@ -16,20 +16,21 @@ function Header(props){
     const displayDesktop = () => {
         return (
             <React.Fragment>
-                <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Toolbar sx={{borderBottom:1,borderColor:'divider'}}>
                     <Typography
                     component='h1'
                     variant='h4'
                     color='inherit'
                     align='left'
                     noWrap
-                    sx={{ flex: 1, overflow: 'visible' }}
+                    sx={{flex: 1,overflow:'visible'}}
                     >
-                        {title}
+                        <a href="/" style={{color:"black",textDecoration:"none"}}>{title}</a>
+                        {/* {title} */}
                     </Typography>
                     <Toolbar
                     component="nav"
-                    sx={{ justifyContent: 'space-between' }}
+                    sx={{justifyContent:'space-between'}}
                     >
                         {headers.map((headers) => (
                             <Button
@@ -38,7 +39,7 @@ function Header(props){
                             key={headers.title}
                             href={headers.link}
                             disabled={!headers.is_active}
-                            sx={{ justifyContent: 'flex-end' }}
+                            sx={{justifyContent:'flex-end'}}
                             >
                                 {headers.title}
                             </Button>
@@ -54,19 +55,19 @@ function Header(props){
         const handleDrawerClose = () => setState((prevState) =>({...prevState, drawerOpen:false}));
         return(
             
-            <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Toolbar sx={{borderBottom:1,borderColor:'divider'}}>
                 <Typography
                 component='h1'
                 variant='h4'
                 color='inherit'
                 align='left'
                 noWrap
-                sx={{ flex: 1, overflow: 'visible' }}
+                sx={{flex: 1,overflow:'visible'}}
                 >
                     {title}
                 </Typography>
                 <Menu 
-                    fontSize = 'large'
+                    fontSize='large'
                     color='inherit'
                     onClick={()=>handleDrawerOpen()}
                 >
@@ -83,7 +84,7 @@ function Header(props){
                         key={headers.title}
                         href={headers.link}
                         disabled={!headers.is_active}
-                        sx={{ justifyContent: 'flex-midlle' }}
+                        sx={{justifyContent:'flex-midlle'}}
                         >
                             {headers.title}
                         </Button>
