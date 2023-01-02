@@ -12,7 +12,7 @@ import Body from '../components/Body'
 const sidebar = {
     title: 'About',
     description:
-        'Etiam porta malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+        'I am a full stack web developer with experience in a variety of programming languages and databases, as well as experience with cloud platforms and a strong educational background in computer science and software engineering.',
 };
 
 

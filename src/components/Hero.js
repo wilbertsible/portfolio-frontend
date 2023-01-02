@@ -14,16 +14,16 @@ function MainFeaturedPost(props) {
         elevation={10}
         square={true}
       sx={{
-        position: 'relative',
-        backgroundColor: 'black',
-        color: '#fff',
-        mt: 2,
+        position:'relative',
+        backgroundColor:'black',
+        color:'#fff',
+        mt:2,
         width:'100%',
-        height: '500px',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: '85% 0%',
-        backgroundImage: `url(${hero})`,
+        height:'500px',
+        backgroundSize:'cover',
+        backgroundRepeat:'no-repeat',
+        backgroundPosition:'85% 0%',
+        backgroundImage:`url(${hero})`,
       }}
      />)}
 

@@ -13,7 +13,7 @@ function Post(props) {
   const displayHome = () => {
     return (
       <CardActionArea component="a" href={window.location.href +"Projects/"+ project.fileName}>
-        <Card elevation={5} sx={{ display: 'flex' }}>
+        <Card elevation={5} sx={{display:'flex'}}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
               {project.title}
@@ -21,7 +21,7 @@ function Post(props) {
           </CardContent>
           <CardMedia
             component="img"
-            sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
+            sx={{width:160,display:{xs:'none',sm:'block'}}}
             image={project.bannerImage}
             alt={project.bannerImage}
           />
@@ -31,7 +31,7 @@ function Post(props) {
   }
   const displayProjectsList = () => {
     return (
-      <Card sx={{ display:'flex', height:'240px' }}>
+      <Card sx={{display:'flex',height:'240px'}}>
         <CardActionArea component="a" href={window.location.href +"/"+ project.fileName}>
           <CardMedia
             component="img"

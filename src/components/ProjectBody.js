@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Banner from './Banner'
-import ContentMapping from '../Content/ProjectMapping'
+import ContentMapping from '../content/ProjectMapping'
 // import PC from '../Content/PC/PC'
 
 import '../App.css'
@@ -33,7 +33,7 @@ function ProjectBody(props){
     return(
         <>
         <Banner imageFile={project.length !== 0 ? project[0].bannerImage: ""}/>
-        <Grid container spacing={5} sx={{ mt: 0 }}>
+        <Grid container spacing={5} sx={{mt: 0}}>
             <Grid item xs={12} >
                 <Typography variant="h4" gutterBottom>
                     {project.length !== 0 ? project[0].title : ""}
