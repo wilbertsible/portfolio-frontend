@@ -39,7 +39,7 @@ function ProjectList(props) {
                 </Typography>
                 <Divider />
                 <Grid container spacing={6} sx={{ mt: 0}}>
-                {projectsList.map((project, projectKey) =>{
+                {projectsList.filter(project =>project.is_active).map((project, projectKey) =>{
                     return(
                     <Grid key={projectKey} item xs={6}>
                         <Post isHome={false} project={project}/>

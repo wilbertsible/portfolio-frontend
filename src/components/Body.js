@@ -40,7 +40,7 @@ function Body(props){
                     </Typography>
                     <Divider />
                     <Grid container spacing={0} >
-                        {projectsList.map((project) =>{
+                        {projectsList.filter(project=>project.is_active).map((project) =>{
                             return(
                                 <Grid item xs={12} md={12} sx={{mt: 2}}>
                                     <Post isHome={true} project={project}/>
@@ -74,7 +74,7 @@ function Body(props){
                     </Typography>
                     <Divider />
                     <Grid container spacing={0} >
-                        {projectsList.map((project) =>{
+                        {projectsList.filter(project=>project.is_active).map((project) =>{
                             return(
                                 <Grid item xs={12} md={12} sx={{mt: 2}}>
                                     <Post isHome={true} project={project}/>

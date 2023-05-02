@@ -22,7 +22,7 @@ function Social(props) {
             variant="body1"
             href={network.link}
             key={network.name}
-            sx={{mb: 2}}
+            sx={{mb:2}}
           >
             <Stack direction="row" spacing={1} alignItems="center">
             <IconWrapper icon={network.icon} />
