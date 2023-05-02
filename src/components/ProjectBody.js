@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Banner from './Banner'
-import ContentMapping from '../content/ProjectMapping'
+import ContentMapping from '../projects/ProjectMapping'
 // import PC from '../Content/PC/PC'
 
 import '../App.css'
