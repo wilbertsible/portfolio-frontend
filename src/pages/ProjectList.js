@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
@@ -38,13 +39,13 @@ function ProjectList(props) {
                             {"Projects"}
                 </Typography>
                 <Divider />
-                <Grid container spacing={6} sx={{ mt: 0}}>
-                {projectsList.filter(project =>project.is_active).map((project, projectKey) =>{
+                <Grid container spacing={6} justifyContent="center" sx={{ mt: 0}}>
+                {projectsList.length > 0 ? projectsList.filter(project =>project.is_active).map((project, projectKey) =>{
                     return(
                     <Grid key={projectKey} item xs={6}>
                         <Post isHome={false} project={project}/>
                     </Grid>
-                )})}
+                )}):<CircularProgress alignItems="center" sx={{marginTop: 5, ml: 10}}/>}
                 </Grid>
             <Footer />
         </Container>

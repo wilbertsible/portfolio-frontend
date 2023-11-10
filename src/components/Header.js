@@ -5,6 +5,10 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/icons-material/Menu';
 import { Drawer } from '@mui/material';
 
+
+
+
+
 function Header(props){
 
     const {headers, title, mobileView} = props;
@@ -32,18 +36,43 @@ function Header(props){
                     component="nav"
                     sx={{justifyContent:'space-between'}}
                     >
-                        {headers.map((headers) => (
-                            <Button
+                        <Button
                             color='inherit'
-                            noWrap
-                            key={headers.title}
-                            href={headers.link}
-                            disabled={!headers.is_active}
+                            key={'Home'}
+                            href={'/'}
+                            nowrap
                             sx={{justifyContent:'flex-end'}}
-                            >
-                                {headers.title}
-                            </Button>
-                        ))}
+                        >
+                            Home
+                        </Button>
+                        <Button
+                            color='inherit'
+                            key={'About'}
+                            href={'/About'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            About
+                        </Button>
+                        <Button
+                            color='inherit'
+                            key={'Projects'}
+                            href={'/Projects'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            Projects
+                        </Button>
+                        <Button
+                            color='inherit'
+                            key={'Contact'}
+                            href={'/Contact'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            Contact
+                        </Button>
+                        
                     </Toolbar>
                 </Toolbar>
             </React.Fragment>

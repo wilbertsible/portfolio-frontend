@@ -1,6 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
 import Post from '../components/Post';
 import AboutCard from '../components/AboutCard';
 import Social from '../components/Social';
@@ -39,13 +40,14 @@ function Body(props){
                         {"Projects"}
                     </Typography>
                     <Divider />
-                    <Grid container spacing={0} >
-                        {projectsList.filter(project=>project.is_active).map((project) =>{
+                    <Grid container justifyContent="center" spacing={0} >
+
+                        {projectsList.length > 0 ? projectsList.filter(project=>project.is_active).map((project) =>{
                             return(
                                 <Grid item xs={12} md={12} sx={{mt: 2}}>
                                     <Post isHome={true} project={project}/>
                                 </Grid>
-                        )})}
+                        )}):<CircularProgress sx={{mt: 5, ml: 10}}/>}
                     </Grid>
                 </Grid>
                 <Grid item xs={4}>
@@ -74,12 +76,12 @@ function Body(props){
                     </Typography>
                     <Divider />
                     <Grid container spacing={0} >
-                        {projectsList.filter(project=>project.is_active).map((project) =>{
+                        {projectsList.length > 0 ? projectsList.filter(project=>project.is_active).map((project) =>{
                             return(
                                 <Grid item xs={12} md={12} sx={{mt: 2}}>
                                     <Post isHome={true} project={project}/>
                                 </Grid>
-                        )})}
+                        )}):<CircularProgress sx={{mt: 5, ml: 10}}/>}
                     </Grid>
                 </Grid>
                 <Grid item xs={4}>
