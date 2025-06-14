@@ -13,7 +13,7 @@ import {
   ThemeProvider,
   CssBaseline,
 } from '@mui/material';
-import { blue, green, yellow, red, purple, orange, grey, indigo } from '@mui/material/colors';
+import { blue, green, yellow, red, purple, grey, indigo } from '@mui/material/colors';
 
 // Define a custom Material-UI theme for better aesthetics
 const theme = createTheme({
@@ -154,11 +154,30 @@ const Zinny = () => {
           <Box
             sx={{
               backgroundColor: 'white',
+              // Padding adapts: 3 units on extra-small (mobile) screens, 5 units on small and up.
               padding: { xs: 3, sm: 5 },
               borderRadius: 7, // Corresponds to rounded-2xl
               boxShadow: 8, // Equivalent to shadow-xl
               border: `1px solid ${green[100]}`,
-              minWidth:'90vh'
+
+              // --- Core for responsiveness ---
+
+              // On extra-small screens (mobile), take up 95% of the width.
+              // This prevents content from hitting the very edges of the screen.
+              width: { xs: '95%', sm: 'auto' },
+
+              // Set a maximum width for the box to ensure readability on very large screens.
+              // If the screen is wider than 1200px, the box won't grow beyond 1200px.
+              // Adjust this value based on your content's optimal reading width.
+              maxWidth: '1200px', // Example: Max width for content readability
+
+              // Center the box horizontally when it doesn't take 100% of the width.
+              margin: '0 auto',
+
+              // Optional: If you want it to always take *at least* a certain width
+              // on larger screens, but still be flexible, you can add a minWidth
+              // for 'sm' or 'md' breakpoints.
+              // minWidth: { sm: '400px' }, // Example: Ensure it's at least 400px wide on small screens and up
             }}
           >
             <Typography variant="h1" align="center" sx={{ mb: { xs: 4, sm: 6 } }}>
@@ -184,12 +203,12 @@ const Zinny = () => {
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
                   title="Current Sunlight"
-                  value={`${plantData.sunlight_level.toFixed(2)} Lux`}
+                  value={`${plantData.sunlight_level.toFixed(0)} %`}
                   icon="☀️"
                   status={getStatusSunlight(plantData.sunlight_level)}
                   bgColor={yellow[50]}
                   progressColor={getSunlightProgressColor(plantData.sunlight_level)}
-                  progress={plantData.sunlight_level / 100} // Scale Lux to 0-100 for progress bar
+                  progress={plantData.sunlight_level}
                   unit="Lux"
                 />
               </Grid>
@@ -197,8 +216,8 @@ const Zinny = () => {
               {/* Temperature Card */}
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
-                  title="Temperature"
-                  value={`${plantData.temperature.toFixed(1)}°C`}
+                  title="Ambient Temperature"
+                  value={`${plantData.temperature.toFixed(1)}°C\n${(plantData.temperature*9/5+32).toFixed(1)}°F`}
                   icon="🌡️"
                   status={getStatusTemperature(plantData.temperature)}
                   bgColor={red[50]}
@@ -211,8 +230,8 @@ const Zinny = () => {
               {/* Humidity Card */}
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
-                  title="Humidity"
-                  value={`${plantData.humidity.toFixed(1)}%`}
+                  title="Ambient Humidity"
+                  value={`${plantData.humidity.toFixed(0)}%`}
                   icon="☁️"
                   status={getStatusHumidity(plantData.humidity)}
                   bgColor={purple[50]}
@@ -273,9 +292,6 @@ const DataCard = ({ title, value, icon, status, bgColor, progressColor, progress
             mb: 1.5,
           }}
         />
-        <Typography variant="body2" sx={{ fontWeight: 'medium', color: getStatusTextColor(status) }}>
-          Status: {status}
-        </Typography>
       </CardContent>
     </Card>
   );
@@ -300,30 +316,27 @@ const getMoistureProgressColor = (moisture) => {
 
 // Sunlight Status (assuming 0-10000 Lux range for indoor plants)
 const getStatusSunlight = (lux) => {
-  if (lux > 8000) return 'Too Intense';
-  if (lux > 2000) return 'Optimal';
-  if (lux > 500) return 'Low Light';
+  if (lux > 70) return 'Optimal';
+  if (lux > 10) return 'Low Light';
   return 'Very Low Light';
 };
 
 const getSunlightProgressColor = (lux) => {
-  const scaledLux = lux / 100; // Scale to 0-100 for color mapping
-  if (scaledLux > 80) return orange[500]; // Too Intense
-  if (scaledLux > 20) return yellow[500]; // Optimal
-  if (scaledLux > 5) return yellow[300]; // Low Light
+  if (lux > 70) return yellow[500]; // Optimal
+  if (lux > 10) return yellow[300]; // Low Light
   return grey[400]; // Very Low Light
 };
 
 // Temperature Status (assuming typical indoor plant range 18-30°C)
 const getStatusTemperature = (temp) => {
-  if (temp > 28) return 'Too Hot';
+  if (temp > 40) return 'Too Hot';
   if (temp > 18) return 'Optimal';
   if (temp > 10) return 'Too Cold';
   return 'Critical - Freezing';
 };
 
 const getTemperatureProgressColor = (temp) => {
-  if (temp > 28) return red[500]; // Too Hot
+  if (temp > 40) return red[500]; // Too Hot
   if (temp > 18) return green[500]; // Optimal
   if (temp > 10) return blue[400]; // Too Cold
   return blue[600]; // Critical
@@ -343,14 +356,5 @@ const getHumidityProgressColor = (humidity) => {
   if (humidity > 20) return indigo[300]; // Too Dry
   return red[400]; // Critically Dry
 };
-
-// Text color for status
-const getStatusTextColor = (status) => {
-  if (status.includes('Optimal')) return green[600];
-  if (status.includes('Needs Water') || status.includes('Low Light') || status.includes('Too Cold') || status.includes('Too Hot') || status.includes('Too Dry') || status.includes('Too Humid')) return orange[600];
-  if (status.includes('Critical') || status.includes('Very Dry') || status.includes('Very Low Light')) return red[600];
-  return grey[600];
-};
-
 
 export default Zinny;

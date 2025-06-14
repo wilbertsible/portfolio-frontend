@@ -11,7 +11,7 @@ import { Drawer } from '@mui/material';
 
 function Header(props){
 
-    const {headers, title, mobileView} = props;
+    const {title, mobileView} = props;
     const [state, setState] = React.useState({
         drawerOpen: false
     })
@@ -106,18 +106,42 @@ function Header(props){
                 open={drawerOpen}
                 onClose={handleDrawerClose}
                 >
-                    {headers.map((headers) => (
-                        <Button
-                        color='inherit'
-                        noWrap
-                        key={headers.title}
-                        href={headers.link}
-                        disabled={!headers.is_active}
-                        sx={{justifyContent:'flex-midlle'}}
+                   <Button
+                            color='inherit'
+                            key={'Home'}
+                            href={'/'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
                         >
-                            {headers.title}
+                            Home
                         </Button>
-                    ))}
+                        <Button
+                            color='inherit'
+                            key={'About'}
+                            href={'/about'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            About
+                        </Button>
+                        <Button
+                            color='inherit'
+                            key={'Projects'}
+                            href={'/projects'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            Projects
+                        </Button>
+                        <Button
+                            color='inherit'
+                            key={'Contact'}
+                            href={'/contact'}
+                            nowrap
+                            sx={{justifyContent:'flex-end'}}
+                        >
+                            Contact
+                        </Button>
                 </Drawer>
             </Toolbar>
         );
