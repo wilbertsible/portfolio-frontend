@@ -20,10 +20,9 @@ function Body(props){
 
     useEffect(() => {
         const fetchContentList = async() =>{
-            await axios.get(url + "/projects")
+            await axios.get(url + "/api/v1/website/projects")
             .then((contentResponse) =>{
-            const headers = JSON.parse(contentResponse.data);
-            setProjectsList(headers);
+            setProjectsList(contentResponse.data);
             })
             .catch((error) =>console.log(error))
         }

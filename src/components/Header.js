@@ -48,7 +48,7 @@ function Header(props){
                         <Button
                             color='inherit'
                             key={'About'}
-                            href={'/About'}
+                            href={'/about'}
                             nowrap
                             sx={{justifyContent:'flex-end'}}
                         >
@@ -57,7 +57,7 @@ function Header(props){
                         <Button
                             color='inherit'
                             key={'Projects'}
-                            href={'/Projects'}
+                            href={'/projects'}
                             nowrap
                             sx={{justifyContent:'flex-end'}}
                         >
@@ -66,7 +66,7 @@ function Header(props){
                         <Button
                             color='inherit'
                             key={'Contact'}
-                            href={'/Contact'}
+                            href={'/contact'}
                             nowrap
                             sx={{justifyContent:'flex-end'}}
                         >

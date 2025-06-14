@@ -3,13 +3,15 @@ import * as React from 'react';
 import PC from './PC'
 import Portfolio from './Portfolio'
 import SudokuSolver from './SudokuSolver'
+import Zinny from './Zinny'
 import Default from './Default'
 
 const projects ={
     Default:Default,
     PC:PC,
     Portfolio:Portfolio,
-    SudokuSolver:SudokuSolver
+    SudokuSolver:SudokuSolver,
+    Zinny:Zinny
 }
 
 

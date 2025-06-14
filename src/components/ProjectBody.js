@@ -3,7 +3,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Banner from './Banner'
 import ContentMapping from '../projects/ProjectMapping'
-// import PC from '../Content/PC/PC'
 
 import '../App.css'
 
@@ -17,13 +16,11 @@ function ProjectBody(props){
     const [project, setProject] = useState([])
     
     const url = process.env.REACT_APP_API_URL
-
     useEffect(() => {
         const fetchProject = async() =>{
-            await axios.get(url + "/projects/" + projectTitle)
+            await axios.get(url + "/api/v1/website/projects/" + projectTitle.toLowerCase())
             .then((contentResponse) =>{
-            const headers = JSON.parse(contentResponse.data);
-            setProject(headers);
+                setProject(contentResponse.data);
             })
             .catch((error) =>console.log(error))
         }
@@ -32,15 +29,16 @@ function ProjectBody(props){
     },[])
     return(
         <>
-        <Banner imageFile={project.length !== 0 ? project[0].bannerImage: ""}/>
+        
+        <Banner imageFile={project.length !== 0 ? project.bannerImage: ""}/>
         <Grid container spacing={5} sx={{mt: 0}}>
             <Grid item xs={12} >
                 <Typography variant="h4" gutterBottom>
-                    {project.length !== 0 ? project[0].title : ""}
+                    {project.length !== 0 ? project.title : ""}
                 </Typography>
                 <Divider />
                 <ContentMapping 
-                projectFileName={project.length !== 0 ? project[0].fileName : "Default"}/>
+                projectFileName={project.length !== 0 ? project.fileName : "Default"}/>
                 </Grid>
             </Grid>
         </>

@@ -21,10 +21,9 @@ function ProjectList(props) {
 
     useEffect(() => {
         const fetchContentList = async() =>{
-            await axios.get(url + "/projects")
+            await axios.get(url + "/api/v1/website/projects")
             .then((contentResponse) =>{
-            const headers = JSON.parse(contentResponse.data);
-            setProjectsList(headers);
+            setProjectsList(contentResponse.data);
             })
             .catch((error) =>console.log(error))
         }
@@ -33,12 +32,14 @@ function ProjectList(props) {
     },[])
 
     return(
+        
         <Container maxwidth="lg">
             <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
             <Typography variant="h3" align="center" gutterBottom sx={{ mt: 6 }}>
                             {"Projects"}
                 </Typography>
                 <Divider />
+
                 <Grid container spacing={6} justifyContent="center" sx={{ mt: 0}}>
                 {projectsList.length > 0 ? projectsList.filter(project =>project.is_active).map((project, projectKey) =>{
                     return(

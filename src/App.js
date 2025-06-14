@@ -17,29 +17,18 @@ const theme = createTheme();
 function App() {
   const [mobileView, setMobileView] = useState(false);
   const [socials, setSocials] = useState([]);
-  const [headerSections, setHeaderSections] = useState([])
 
   const url = process.env.REACT_APP_API_URL
 
   useEffect(() => {
     fetchSocials();
-    fetchHeaderSections();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async  function fetchSocials(){
-    await axios.get(url + "/social")
+    await axios.get(url + "/api/v1/website/social")
     .then((socialsResponse) =>{
-      const socials = JSON.parse(socialsResponse.data);
-      setSocials(socials);
-    })
-  }
-
-  async  function fetchHeaderSections(){
-    await axios.get(url + "/header")
-    .then((heardersResponse) =>{
-      const headers = JSON.parse(heardersResponse.data);
-      setHeaderSections(headers);
+      setSocials(socialsResponse.data);
     })
   }
 
@@ -66,21 +55,18 @@ function App() {
           <Home 
           mobileView={mobileView}
           socials={socials}
-          headers={headerSections}
           />} />
-        <Route exact path="/Projects" 
+        <Route exact path="/projects" 
         element={
           <ProjectList
             mobileView={mobileView}
             socials={socials}
-            headers={headerSections}
           />} />
-        <Route exact path="/Projects/:title" 
+        <Route exact path="/projects/:title" 
         element={
           <ProjectLayout
             mobileView={mobileView}
             socials={socials}
-            headers={headerSections}
             //content={content}
           />} />
       </Routes>
