@@ -20,7 +20,7 @@ function Header(props){
     const displayDesktop = () => {
         return (
             <React.Fragment>
-                <Toolbar sx={{borderBottom:1,borderColor:'divider'}}>
+                <Toolbar sx={{borderBottom:1,borderColor:'divider',maxWidth:'lg', marginLeft:'auto',marginRight:'auto'}}>
                     <Typography
                     component='h1'
                     variant='h4'

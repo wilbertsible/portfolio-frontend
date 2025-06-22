@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
+import {DateTimeToDateTimeString} from '../utils/DateTimeConverter';
+
 import axios from 'axios';
 import {
   Container,
@@ -189,7 +191,7 @@ const Zinny = () => {
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
                   title="Soil Moisture"
-                  value={`${plantData.soil_moisture.toFixed(2)}%`}
+                  value1={`${plantData.soil_moisture.toFixed(2)}%`}
                   icon="💧"
                   status={getStatusMoisture(plantData.soil_moisture)}
                   bgColor={blue[50]}
@@ -199,25 +201,14 @@ const Zinny = () => {
                 />
               </Grid>
 
-              {/* Sunlight Card */}
-              <Grid item xs={12} sm={6} lg={3}>
-                <DataCard
-                  title="Current Sunlight"
-                  value={`${plantData.sunlight_level.toFixed(0)} %`}
-                  icon="☀️"
-                  status={getStatusSunlight(plantData.sunlight_level)}
-                  bgColor={yellow[50]}
-                  progressColor={getSunlightProgressColor(plantData.sunlight_level)}
-                  progress={plantData.sunlight_level}
-                  unit="Lux"
-                />
-              </Grid>
+              
 
               {/* Temperature Card */}
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
                   title="Ambient Temperature"
-                  value={`${plantData.temperature.toFixed(1)}°C\n${(plantData.temperature*9/5+32).toFixed(1)}°F`}
+                  value1={`${plantData.temperature.toFixed(1)}°C`}
+                  value2={`${(plantData.temperature*9/5+32).toFixed(1)}°F`}
                   icon="🌡️"
                   status={getStatusTemperature(plantData.temperature)}
                   bgColor={red[50]}
@@ -231,7 +222,7 @@ const Zinny = () => {
               <Grid item xs={12} sm={6} lg={3}>
                 <DataCard
                   title="Ambient Humidity"
-                  value={`${plantData.humidity.toFixed(0)}%`}
+                  value1={`${plantData.humidity.toFixed(0)}%`}
                   icon="☁️"
                   status={getStatusHumidity(plantData.humidity)}
                   bgColor={purple[50]}
@@ -240,13 +231,23 @@ const Zinny = () => {
                   unit="%"
                 />
               </Grid>
+              {/* Sunlight Card */}
+              <Grid item xs={12} sm={6} lg={3}>
+                <DataCard
+                  title="Current Sunlight"
+                  value1={`${plantData.sunlight_level.toFixed(0)} %`}
+                  icon="☀️"
+                  status={getStatusSunlight(plantData.sunlight_level)}
+                  bgColor={yellow[50]}
+                  progressColor={getSunlightProgressColor(plantData.sunlight_level)}
+                  progress={plantData.sunlight_level}
+                  unit="Lux"
+                />
+              </Grid>
             </Grid>
-
-            {console.log(plantData.latest_reading_datetime)}
-
             {/* Footer for Last Updated */}
             <Typography variant="body2" align="center" sx={{ mt: 4, color: grey[500] }}>
-              Last updated: {plantData.latest_reading_datetime}
+              Last updated: {DateTimeToDateTimeString(plantData.latest_reading_datetime)}
             </Typography>
           </Box>
         </Container>
@@ -256,7 +257,7 @@ const Zinny = () => {
 };
 
 // DataCard component for displaying individual metrics
-const DataCard = ({ title, value, icon, status, bgColor, progressColor, progress, unit }) => {
+const DataCard = ({ title, value1, value2, icon, status, bgColor, progressColor, progress, unit }) => {
   return (
     <Card
       sx={{
@@ -277,7 +278,9 @@ const DataCard = ({ title, value, icon, status, bgColor, progressColor, progress
           {title}
         </Typography>
         <Typography variant="h4" component="div" sx={{ fontWeight: 'extrabold', mb: 2, fontSize: { xs: '2rem', sm: '2.5rem' } }}>
-          {value}
+          {value1}
+          {value2 && <br />} {/* Add newline if value2 exists */}
+          {value2}
         </Typography>
         <LinearProgress
           variant="determinate"

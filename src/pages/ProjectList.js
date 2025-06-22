@@ -1,6 +1,4 @@
 import Post from '../components/Post';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 
 import Container from '@mui/material/Container';
@@ -14,8 +12,7 @@ import React, {useEffect, useState} from 'react'
 
 require('dotenv').config()
 
-function ProjectList(props) {
-    const {mobileView, headers} = props
+function ProjectList() {
     const [projectsList, setProjectsList] = useState([])
     const url = process.env.REACT_APP_API_URL
 
@@ -34,7 +31,6 @@ function ProjectList(props) {
     return(
         
         <Container maxwidth="lg">
-            <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
             <Typography variant="h3" align="center" gutterBottom sx={{ mt: 6 }}>
                             {"Projects"}
                 </Typography>
@@ -48,7 +44,6 @@ function ProjectList(props) {
                     </Grid>
                 )}):<CircularProgress alignItems="center" sx={{marginTop: 5, ml: 10}}/>}
                 </Grid>
-            <Footer />
         </Container>
     )
 }

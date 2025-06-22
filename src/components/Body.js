@@ -3,20 +3,21 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import CircularProgress from '@mui/material/CircularProgress';
 import Post from '../components/Post';
-import AboutCard from '../components/AboutCard';
+import LatestNews from './LatestNews';
 import Social from '../components/Social';
 
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 
 require('dotenv').config()
+const url = process.env.REACT_APP_API_URL
 
 function Body(props){
-    const {sidebar, socials, mobileView} = props;
+    const {mobileView} = props;
 
     const [projectsList, setProjectsList] = useState([])
     
-    const url = process.env.REACT_APP_API_URL
+
 
     useEffect(() => {
         const fetchContentList = async() =>{
@@ -50,13 +51,8 @@ function Body(props){
                     </Grid>
                 </Grid>
                 <Grid item xs={4}>
-                    <AboutCard
-                    title={sidebar.title}
-                    description={sidebar.description}
-                    />
-                    <Social
-                    socials={socials}
-                    />
+                    <LatestNews/>
+                    <Social/>
                 </Grid>
             </Grid>
         )
@@ -66,10 +62,7 @@ function Body(props){
         return(
             <Grid container spacing={5} sx={{mt: 0}}>
                 <Grid item xs={12} >
-                    <AboutCard
-                    title={sidebar.title}
-                    description={sidebar.description}
-                    />
+                    <LatestNews/>
                     <Typography variant="h6" gutterBottom>
                         {"Projects"}
                     </Typography>
@@ -84,9 +77,7 @@ function Body(props){
                     </Grid>
                 </Grid>
                 <Grid item xs={4}>
-                <Social
-                socials={socials}
-                />
+                <Social/>
                 </Grid>
             </Grid>
         )
