@@ -137,7 +137,7 @@ const ImageCarousel = ({ images, height }) => {
                 {/* Map over the images array to create a slide for each image */}
                 {images.map((image, index) => (
                     <div key={index} className="carousel-image-container">
-                        <img src={image} alt={`Carousel Image ${index + 1}`} />
+                        <img src={image} alt={`Carousel ${index + 1}`} />
                     </div>
                 ))}
             </Carousel>
