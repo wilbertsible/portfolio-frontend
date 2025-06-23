@@ -17,6 +17,7 @@ import Ultimate from './pages/About/Ultimate';
 import Chemist from './pages/About/Chemist';
 import ProjectList from './pages/ProjectList'; 
 import ProjectBody from './components/ProjectBody';
+import Contact from './pages/Contact'
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -69,6 +70,8 @@ function App() {
         </ Route>
         <Route exact path="/projects" element={<ProjectList/>} />
         <Route exact path="/projects/:title" element={<ProjectBody/>} />
+        <Route exact path="/contact" element={<Contact/>} />
+
       </Routes>
     <Footer />
     </ThemeProvider>
