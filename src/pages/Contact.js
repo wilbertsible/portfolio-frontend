@@ -24,15 +24,15 @@ const Contact = () => {
 
         // Simple validation: Name and Message are required
         if (!name || !message) {
-          setError('Please fill in your Name and Message.');
-          return;
-        }
+            setError('Please fill in your Name and Message.');
+            return;
+            }
 
         // Email validation (only if email is provided)
-        if (email && !/\S+@\S+\.\S+/.test(email)) {
-          setError('Please enter a valid email address, or leave it blank.');
-          return;
-        }
+        if (email && !/\S+@\S+\.\S/.test(email)) { // Added missing part of regex for email validation
+            setError('Please enter a valid email address, or leave it blank.');
+            return;
+            }
 
         setError(''); // Clear any previous errors
         setIsLoading(true); // Set loading to true when submission starts
@@ -44,12 +44,7 @@ const Contact = () => {
            message:message,
           });
 
-          const data = await response.data;
-
-          if (!response.ok) {
-            // Handle HTTP errors
-            throw new Error(data.message || 'Failed to send message on the server.');
-          }
+          const data = response.data;
 
           console.log('Form Submitted Successfully!', data);
           setIsSubmitted(true); // Set submission success
@@ -61,7 +56,6 @@ const Contact = () => {
 
         } catch (err) {
           console.error('Error submitting form:', err);
-          console.error(err.response)
           setError(`Failed to send message: ${err.message || 'An unknown error occurred.'}`);
           setIsSubmitted(false); // Ensure success message isn't shown on error
         } finally {
