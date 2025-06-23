@@ -102,8 +102,8 @@ const Contact = () => {
                 }}
               >
                 <img
-                  src="https://placehold.co/600x400/C0DAF7/FFFFFF?text=Your%20Image%20Here"
-                  alt="Placeholder Contact Image"
+                  src="https://i.imgur.com/qOHopQ6.jpg"
+                  alt="Wilbert with Hulk"
                   style={{
                     borderRadius: '0.5rem',
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -135,7 +135,7 @@ const Contact = () => {
                     letterSpacing: '-0.025em' // tracking-tight
                   }}
                 >
-                  Contact Us
+                  Contact me
                 </Typography>
 
                 {isSubmitted ? (
